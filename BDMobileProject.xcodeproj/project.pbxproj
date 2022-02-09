@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08431BD827B3F10C006A8AC0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08431BD727B3F10C006A8AC0 /* CoreDataManager.swift */; };
 		0844FB5427B3CBDC00980EEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FB5327B3CBDC00980EEA /* AppDelegate.swift */; };
 		0844FB5627B3CBDC00980EEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FB5527B3CBDC00980EEA /* SceneDelegate.swift */; };
-		0844FB5827B3CBDC00980EEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FB5727B3CBDC00980EEA /* ViewController.swift */; };
+		0844FB5827B3CBDC00980EEA /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FB5727B3CBDC00980EEA /* CategoryViewController.swift */; };
 		0844FB5B27B3CBDC00980EEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0844FB5927B3CBDC00980EEA /* Main.storyboard */; };
 		0844FB5E27B3CBDC00980EEA /* BDMobileProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0844FB5C27B3CBDC00980EEA /* BDMobileProject.xcdatamodeld */; };
 		0844FB6027B3CBDD00980EEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0844FB5F27B3CBDD00980EEA /* Assets.xcassets */; };
@@ -19,10 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08431BD727B3F10C006A8AC0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0844FB5027B3CBDC00980EEA /* BDMobileProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BDMobileProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0844FB5327B3CBDC00980EEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0844FB5527B3CBDC00980EEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0844FB5727B3CBDC00980EEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0844FB5727B3CBDC00980EEA /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		0844FB5A27B3CBDC00980EEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0844FB5D27B3CBDC00980EEA /* BDMobileProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BDMobileProject.xcdatamodel; sourceTree = "<group>"; };
 		0844FB5F27B3CBDD00980EEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,7 +57,7 @@
 		08431BD427B3CD15006A8AC0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0844FB5727B3CBDC00980EEA /* ViewController.swift */,
+				0844FB5727B3CBDC00980EEA /* CategoryViewController.swift */,
 				0844FB6A27B3D22B00980EEA /* LandmarkViewController.swift */,
 			);
 			path = Controllers;
@@ -64,6 +66,7 @@
 		08431BD527B3CD1D006A8AC0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				08431BD727B3F10C006A8AC0 /* CoreDataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -71,8 +74,8 @@
 		08431BD627B3CD3F006A8AC0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				0844FB5327B3CBDC00980EEA /* AppDelegate.swift */,
 				0844FB5527B3CBDC00980EEA /* SceneDelegate.swift */,
+				0844FB5327B3CBDC00980EEA /* AppDelegate.swift */,
 				0844FB5F27B3CBDD00980EEA /* Assets.xcassets */,
 			);
 			path = Utilities;
@@ -180,7 +183,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0844FB5827B3CBDC00980EEA /* ViewController.swift in Sources */,
+				08431BD827B3F10C006A8AC0 /* CoreDataManager.swift in Sources */,
+				0844FB5827B3CBDC00980EEA /* CategoryViewController.swift in Sources */,
 				0844FB5E27B3CBDC00980EEA /* BDMobileProject.xcdatamodeld in Sources */,
 				0844FB5427B3CBDC00980EEA /* AppDelegate.swift in Sources */,
 				0844FB6B27B3D22B00980EEA /* LandmarkViewController.swift in Sources */,

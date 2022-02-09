@@ -6,9 +6,17 @@
 //
 
 import UIKit
+import CoreData
 
 class CategoryViewController: UITableViewController {
 
+    //MARK: - Properties
+    
+    private var categories: [Category] = []
+    let dbManagerInstance = CoreDataManager.sharedInstance
+    
+    //MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

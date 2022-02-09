@@ -4,7 +4,7 @@
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="modificationDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String"/>
-        <relationship name="landmark" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Landmark" inverseName="category" inverseEntity="Landmark"/>
+        <relationship name="landmarks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Landmark" inverseName="category" inverseEntity="Landmark"/>
     </entity>
     <entity name="Coordinate" representedClassName="Coordinate" syncable="YES" codeGenerationType="class">
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -18,12 +18,12 @@
         <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="modificationDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String"/>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="landmark" inverseEntity="Category"/>
-        <relationship name="coordinate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coordinate" inverseName="landmark" inverseEntity="Coordinate"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="landmarks" inverseEntity="Category"/>
+        <relationship name="coordinate" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Coordinate" inverseName="landmark" inverseEntity="Coordinate"/>
     </entity>
     <elements>
-        <element name="Landmark" positionX="-13.2515869140625" positionY="-360.4627685546875" width="128" height="163"/>
         <element name="Category" positionX="183.2279052734375" positionY="-346.8058319091797" width="128" height="103"/>
         <element name="Coordinate" positionX="-34.28900146484375" positionY="-81.18142700195312" width="128" height="88"/>
+        <element name="Landmark" positionX="-13.2515869140625" positionY="-360.4627685546875" width="128" height="163"/>
     </elements>
 </model>
