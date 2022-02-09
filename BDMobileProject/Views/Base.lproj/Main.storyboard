@@ -60,7 +60,7 @@
         <!--Lieu-->
         <scene sceneID="AuW-Gj-Ucp">
             <objects>
-                <tableViewController id="8vk-in-JGE" sceneMemberID="viewController">
+                <tableViewController id="8vk-in-JGE" customClass="LandmarkViewController" customModule="BDMobileProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="bpB-dT-tgZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
