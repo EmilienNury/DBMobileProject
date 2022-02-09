@@ -48,6 +48,29 @@ class LandmarkViewController: UITableViewController {
         return swipeActionConfiguration
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "addLandmark":
+            guard let naviguationController = segue.destination as? UINavigationController,
+                  let destination = naviguationController.topViewController as? AddLandmarkViewController else{
+                      return
+                  }
+            
+            destination.title = "Ajouter un lieu"
+            
+        case"detailLandmark":
+            guard let naviguationController = segue.destination as? UINavigationController,
+                  let destination = naviguationController.topViewController as? DetailsViewController else{
+                      return
+                  }
+            
+            destination.title = "Ajouter un lieu"
+            
+        default:
+            fatalError()
+        }
+    }
+    
     
 
 }
