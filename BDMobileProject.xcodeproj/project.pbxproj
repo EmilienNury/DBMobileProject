@@ -19,6 +19,8 @@
 		0844FB6D27B3D2D400980EEA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0844FB6C27B3D2D400980EEA /* .gitignore */; };
 		0844FB7727B40D7000980EEA /* CategoryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FB7627B40D7000980EEA /* CategoryItemCell.swift */; };
 		0844FB7927B40D7A00980EEA /* LandmarkItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FB7827B40D7A00980EEA /* LandmarkItemCell.swift */; };
+		0844FB7B27B4177800980EEA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FB7A27B4177800980EEA /* DetailsViewController.swift */; };
+		0844FB7D27B417CE00980EEA /* AddLandmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FB7C27B417CE00980EEA /* AddLandmarkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		0844FB6C27B3D2D400980EEA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0844FB7627B40D7000980EEA /* CategoryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemCell.swift; sourceTree = "<group>"; };
 		0844FB7827B40D7A00980EEA /* LandmarkItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkItemCell.swift; sourceTree = "<group>"; };
+		0844FB7A27B4177800980EEA /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		0844FB7C27B417CE00980EEA /* AddLandmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLandmarkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 			children = (
 				0844FB5727B3CBDC00980EEA /* CategoryViewController.swift */,
 				0844FB6A27B3D22B00980EEA /* LandmarkViewController.swift */,
+				0844FB7A27B4177800980EEA /* DetailsViewController.swift */,
+				0844FB7C27B417CE00980EEA /* AddLandmarkViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -191,6 +197,8 @@
 			files = (
 				08431BD827B3F10C006A8AC0 /* CoreDataManager.swift in Sources */,
 				0844FB5827B3CBDC00980EEA /* CategoryViewController.swift in Sources */,
+				0844FB7D27B417CE00980EEA /* AddLandmarkViewController.swift in Sources */,
+				0844FB7B27B4177800980EEA /* DetailsViewController.swift in Sources */,
 				0844FB7927B40D7A00980EEA /* LandmarkItemCell.swift in Sources */,
 				0844FB7727B40D7000980EEA /* CategoryItemCell.swift in Sources */,
 				0844FB5E27B3CBDC00980EEA /* BDMobileProject.xcdatamodeld in Sources */,

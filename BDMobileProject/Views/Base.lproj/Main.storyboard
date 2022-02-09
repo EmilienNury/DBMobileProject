@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -86,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellLandmark" rowHeight="167" id="Fic-zP-933" customClass="LandmarkItemCell" customModule="BDMobileProject" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellLandmark" rowHeight="167" id="Fic-zP-933" customClass="LandmarkItemCell" customModule="BDMobileProject" customModuleProvider="target">
                                 <rect key="frame" x="20" y="32" width="374" height="167"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fic-zP-933" id="Des-Va-PE6">
@@ -103,7 +104,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAY-m1-Ymo">
-                                            <rect key="frame" x="111" y="62" width="263" height="85"/>
+                                            <rect key="frame" x="111" y="97" width="134" height="50"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -122,6 +123,7 @@
                                     <outlet property="descriptionLandmark" destination="kAY-m1-Ymo" id="Qzz-6v-Blh"/>
                                     <outlet property="imageCtaegory" destination="t1Q-qI-jCZ" id="9tv-XY-2fc"/>
                                     <outlet property="titleLandmark" destination="ncC-L8-flE" id="rcO-Op-vBr"/>
+                                    <segue destination="XCc-MN-ZHi" kind="show" identifier="detailLandmark" id="yQv-5H-AxB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -131,12 +133,48 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Lieu" id="MH1-vX-xb5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="B7z-T3-Hon"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="B7z-T3-Hon">
+                            <connections>
+                                <segue destination="809-mM-pKn" kind="presentation" identifier="addLandmark" id="n9S-GR-Bgv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezD-8l-wE0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1813.0434782608697" y="112.5"/>
+        </scene>
+        <!--Add Landmark View Controller-->
+        <scene sceneID="1P0-ik-0kK">
+            <objects>
+                <viewController id="Yjh-YA-fJb" customClass="AddLandmarkViewController" customModule="BDMobileProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H67-xu-N60">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="JVJ-ge-5eN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="H2p-jP-jQ6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fxn-CO-PAR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2721.739130434783" y="793.52678571428567"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="Tio-HU-mXb">
+            <objects>
+                <viewController id="Kkd-y8-XDz" customClass="DetailsViewController" customModule="BDMobileProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bld-Na-gSg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="7ui-Pb-Hq7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tNX-in-vOW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PAT-J0-rPQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3637.68115942029" y="112.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nAh-gr-cQe">
@@ -155,6 +193,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6N7-V7-tJA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92.753623188405811" y="112.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6aZ-Bz-ZIG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XCc-MN-ZHi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="ZN1-JL-ARX"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uEu-pV-z2U">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Kkd-y8-XDz" kind="relationship" relationship="rootViewController" id="x6E-vz-W1E"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qgg-aS-UGF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2727.536231884058" y="112.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bQq-cp-PgV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="809-mM-pKn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7v6-bT-3nd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Yjh-YA-fJb" kind="relationship" relationship="rootViewController" id="qsX-in-YeV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CCK-54-izc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1811.594202898551" y="793.52678571428567"/>
         </scene>
     </scenes>
     <resources>
