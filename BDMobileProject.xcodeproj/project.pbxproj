@@ -39,6 +39,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08431BD327B3CD0D006A8AC0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0844FB5927B3CBDC00980EEA /* Main.storyboard */,
+				0844FB6127B3CBDD00980EEA /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		08431BD427B3CD15006A8AC0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0844FB5727B3CBDC00980EEA /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		08431BD527B3CD1D006A8AC0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		08431BD627B3CD3F006A8AC0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0844FB5327B3CBDC00980EEA /* AppDelegate.swift */,
+				0844FB5527B3CBDC00980EEA /* SceneDelegate.swift */,
+				0844FB5F27B3CBDD00980EEA /* Assets.xcassets */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		0844FB4727B3CBDC00980EEA = {
 			isa = PBXGroup;
 			children = (
@@ -58,13 +92,11 @@
 		0844FB5227B3CBDC00980EEA /* BDMobileProject */ = {
 			isa = PBXGroup;
 			children = (
-				0844FB5327B3CBDC00980EEA /* AppDelegate.swift */,
-				0844FB5527B3CBDC00980EEA /* SceneDelegate.swift */,
-				0844FB5727B3CBDC00980EEA /* ViewController.swift */,
-				0844FB5927B3CBDC00980EEA /* Main.storyboard */,
-				0844FB5F27B3CBDD00980EEA /* Assets.xcassets */,
-				0844FB6127B3CBDD00980EEA /* LaunchScreen.storyboard */,
 				0844FB6427B3CBDD00980EEA /* Info.plist */,
+				08431BD627B3CD3F006A8AC0 /* Utilities */,
+				08431BD527B3CD1D006A8AC0 /* Models */,
+				08431BD427B3CD15006A8AC0 /* Controllers */,
+				08431BD327B3CD0D006A8AC0 /* Views */,
 				0844FB5C27B3CBDC00980EEA /* BDMobileProject.xcdatamodeld */,
 			);
 			path = BDMobileProject;
