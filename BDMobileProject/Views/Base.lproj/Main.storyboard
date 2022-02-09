@@ -57,7 +57,7 @@
                                     <outlet property="created" destination="wam-qH-lmz" id="6km-NB-3Hs"/>
                                     <outlet property="edited" destination="LXo-sR-fjA" id="ftu-vE-3s7"/>
                                     <outlet property="titleCategory" destination="KQf-rK-c1s" id="3af-LI-zeH"/>
-                                    <segue destination="8vk-in-JGE" kind="show" id="nAr-pb-li4"/>
+                                    <segue destination="8vk-in-JGE" kind="show" identifier="landmarks" id="nAr-pb-li4"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
