@@ -9,11 +9,19 @@ import UIKit
 
 class LandmarkViewController: UITableViewController {
 
+    //MARK: - Properties
+    public var category: Category?
     private var landmarks: [Landmark] = []
+    let dbManagerInstance = CoreDataManager.sharedInstance
+    
+    //MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        landmarks = dbManagerInstance.fetchLandmarks()
+        tableView.reloadData()
+        title = category?.title
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,7 +46,7 @@ class LandmarkViewController: UITableViewController {
                 return
             }
             
-            //self.delete() TODO: Emilien func delete
+            self.dbManagerInstance.deleteLandmark(landmark: landmark)
             self.landmarks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
