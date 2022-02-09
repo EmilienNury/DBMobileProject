@@ -19,7 +19,9 @@ class CategoryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        categories = dbManagerInstance.fetchCategories()
+        tableView.reloadData()
     }
     
     @IBAction func AddBarButtonItemAction(_ sender: UIBarButtonItem) {
@@ -36,8 +38,8 @@ class CategoryViewController: UITableViewController {
                 return
             }
             
-            //self.createItem(title: textField.text!)
-            //self.categories = self.fetchCategories()
+            self.dbManagerInstance.createCategory(title: textField.text!)
+            self.categories = self.dbManagerInstance.fetchCategories()
             self.tableView.reloadData()
         }
         
@@ -69,7 +71,7 @@ class CategoryViewController: UITableViewController {
                 return
             }
             
-            //self.delete() TODO: Emilien func delete
+            self.dbManagerInstance.deleteCategory(category: category)
             self.categories.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
