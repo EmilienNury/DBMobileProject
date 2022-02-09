@@ -81,7 +81,15 @@ class CategoryViewController: UITableViewController {
         return swipeActionConfiguration
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "landmarks":
+            (segue.destination as! LandmarkViewController).category = categories[tableView.indexPath(for: sender as! UITableViewCell)?.item ?? 0]
+            
+        default:
+            fatalError()
+        }
+    }
 
 }
 
