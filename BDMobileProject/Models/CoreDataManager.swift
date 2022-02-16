@@ -25,9 +25,6 @@ public class CoreDataManager {
         let fetchRequest = Category.fetchRequest()
         
         switch filter{
-        case "title":
-            let sortDescriptor = NSSortDescriptor(keyPath: \Category.title, ascending: true)
-            fetchRequest.sortDescriptors = [sortDescriptor]
         case "create":
             let sortDescriptor = NSSortDescriptor(keyPath: \Category.creationDate, ascending: true)
             fetchRequest.sortDescriptors = [sortDescriptor]
@@ -35,7 +32,8 @@ public class CoreDataManager {
             let sortDescriptor = NSSortDescriptor(keyPath: \Category.modificationDate, ascending: true)
             fetchRequest.sortDescriptors = [sortDescriptor]
         default:
-            break
+            let sortDescriptor = NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:)))
+            fetchRequest.sortDescriptors = [sortDescriptor]
         }
         
         if let searchQuery = searchQuery, !searchQuery.isEmpty {
@@ -94,13 +92,9 @@ public class CoreDataManager {
     public func fetchLandmarks(searchQuery: String? = nil, category: Category?,filter: String? = nil) -> [Landmark] {
         let fetchRequest = Landmark.fetchRequest()
         
-        
         var predicates: [NSPredicate] = []
         
         switch filter{
-            case "title":
-            let sortDescriptor = NSSortDescriptor(keyPath: \Landmark.title, ascending: true)
-                fetchRequest.sortDescriptors = [sortDescriptor]
             case "create":
                 let sortDescriptor = NSSortDescriptor(keyPath: \Landmark.creationDate, ascending: true)
                 fetchRequest.sortDescriptors = [sortDescriptor]
@@ -108,7 +102,8 @@ public class CoreDataManager {
                 let sortDescriptor = NSSortDescriptor(keyPath: \Landmark.modificationDate, ascending: true)
                 fetchRequest.sortDescriptors = [sortDescriptor]
             default:
-                break
+            let sortDescriptor = NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:)))
+                fetchRequest.sortDescriptors = [sortDescriptor]
         }
         
         if let searchQuery = searchQuery, !searchQuery.isEmpty {

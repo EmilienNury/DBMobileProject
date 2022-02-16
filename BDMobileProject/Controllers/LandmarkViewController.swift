@@ -31,7 +31,7 @@ class LandmarkViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let filterTitle = UIAction(title: "Trier par titre") { (action) in
-            self.landmarks = self.dbManagerInstance.fetchLandmarks( category: self.category, filter: "title")
+            self.landmarks = self.dbManagerInstance.fetchLandmarks( category: self.category)
             self.tableView.reloadData()
         }
         

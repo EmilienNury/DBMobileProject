@@ -33,7 +33,7 @@ class CategoryViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
                 
         let filterTitle = UIAction(title: "Trier par titre") { (action) in
-            self.categories = self.dbManagerInstance.fetchCategories(filter: "title")
+            self.categories = self.dbManagerInstance.fetchCategories()
             self.tableView.reloadData()
         }
         
