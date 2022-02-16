@@ -18,10 +18,12 @@ class AddLandmarkViewController: UIViewController, PHPickerViewControllerDelegat
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true, completion: nil)
-        results[0].itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
-            DispatchQueue.main.async {
-                if let image = image as? UIImage {
-                     self.imageLandmark.image = image
+        if (results.count > 0) {
+            results[0].itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+                DispatchQueue.main.async {
+                    if let image = image as? UIImage {
+                         self.imageLandmark.image = image
+                    }
                 }
             }
         }
