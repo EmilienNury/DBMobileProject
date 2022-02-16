@@ -86,8 +86,28 @@ public class CoreDataManager {
         saveContext()
     }
     
-    public func fetchLandmarks(searchQuery: String? = nil) -> [Landmark] {
+    public func fetchLandmarks(searchQuery: String? = nil, category: Category?) -> [Landmark] {
         let fetchRequest = Landmark.fetchRequest()
+        
+        var predicates: [NSPredicate] = []
+        
+        if let searchQuery = searchQuery, !searchQuery.isEmpty {
+            let predicate = NSPredicate(format: "%K contains[cd] %@",
+                                        argumentArray: [#keyPath(Landmark.title), searchQuery])
+            predicates.append(predicate)
+        }
+        
+        if let categoryQuery = category {
+            let predicate = NSPredicate(format: "%K == %@",
+                                        argumentArray: [#keyPath(Landmark.category), categoryQuery])
+            predicates.append(predicate)
+        }
+        
+        let compoundPredicate = NSCompoundPredicate(
+            type: .and,
+            subpredicates: predicates)
+        
+        fetchRequest.predicate = compoundPredicate
         
         do {
             let result: [Landmark] = try container.viewContext.fetch(fetchRequest)
