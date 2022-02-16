@@ -22,6 +22,10 @@ class CategoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let searchConroller = UISearchController(searchResultsController: nil)
+        searchConroller.searchResultsUpdater = self
+        navigationItem.searchController = searchConroller
+        
         categories = dbManagerInstance.fetchCategories()
         tableView.reloadData()
     }
@@ -29,17 +33,17 @@ class CategoryViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
                 
         let filterTitle = UIAction(title: "Trier par titre") { (action) in
-            self.categories = self.dbManagerInstance.fetchCategories(searchQuery: "title")
+            self.categories = self.dbManagerInstance.fetchCategories(filter: "title")
             self.tableView.reloadData()
         }
         
         let filterCreate = UIAction(title: "Trier par date de création") { (action) in
-            self.categories = self.dbManagerInstance.fetchCategories(searchQuery: "create")
+            self.categories = self.dbManagerInstance.fetchCategories(filter: "create")
             self.tableView.reloadData()
         }
         
         let filterEdit = UIAction(title: "Trier par date d'édition") { (action) in
-            self.categories = self.dbManagerInstance.fetchCategories(searchQuery: "edit")
+            self.categories = self.dbManagerInstance.fetchCategories(filter: "edit")
             self.tableView.reloadData()
         }
         
@@ -120,4 +124,13 @@ class CategoryViewController: UITableViewController {
     }
 
 }
+
+extension CategoryViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchQuery = searchController.searchBar.text
+        self.categories = self.dbManagerInstance.fetchCategories(searchQuery: searchQuery)
+        tableView.reloadData()
+    }
+}
+
 

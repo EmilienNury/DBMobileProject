@@ -145,11 +145,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Lieu" id="MH1-vX-xb5">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="line.3.horizontal.decrease" catalog="system" id="qsP-8s-bMh">
-                                <connections>
-                                    <action selector="filterLandmark:" destination="8vk-in-JGE" id="ZzD-WK-Yhq"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem title="Item" image="line.3.horizontal.decrease" catalog="system" id="qsP-8s-bMh"/>
                             <barButtonItem systemItem="add" id="B7z-T3-Hon">
                                 <connections>
                                     <segue destination="809-mM-pKn" kind="presentation" identifier="addLandmark" id="n9S-GR-Bgv"/>
@@ -157,6 +153,9 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="filterLandmark" destination="qsP-8s-bMh" id="dZf-IL-uqD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezD-8l-wE0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -21,10 +21,10 @@ public class CoreDataManager {
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
     
-    public func fetchCategories(searchQuery: String? = nil) -> [Category] {
+    public func fetchCategories(searchQuery: String? = nil,filter: String? = nil) -> [Category] {
         let fetchRequest = Category.fetchRequest()
         
-        switch searchQuery{
+        switch filter{
         case "title":
             let sortDescriptor = NSSortDescriptor(keyPath: \Category.title, ascending: true)
             fetchRequest.sortDescriptors = [sortDescriptor]
@@ -36,6 +36,11 @@ public class CoreDataManager {
             fetchRequest.sortDescriptors = [sortDescriptor]
         default:
             break
+        }
+        
+        if let searchQuery = searchQuery, !searchQuery.isEmpty {
+            let predicate = NSPredicate(format: "%K contains[cd] %@", argumentArray: [#keyPath(Category.title),searchQuery])
+            fetchRequest.predicate = predicate
         }
         
         do {
@@ -86,14 +91,28 @@ public class CoreDataManager {
         saveContext()
     }
     
-    public func fetchLandmarks(searchQuery: String? = nil, category: Category?) -> [Landmark] {
+    public func fetchLandmarks(searchQuery: String? = nil, category: Category?,filter: String? = nil) -> [Landmark] {
         let fetchRequest = Landmark.fetchRequest()
+        
         
         var predicates: [NSPredicate] = []
         
+        switch filter{
+            case "title":
+            let sortDescriptor = NSSortDescriptor(keyPath: \Landmark.title, ascending: true)
+                fetchRequest.sortDescriptors = [sortDescriptor]
+            case "create":
+                let sortDescriptor = NSSortDescriptor(keyPath: \Landmark.creationDate, ascending: true)
+                fetchRequest.sortDescriptors = [sortDescriptor]
+            case "edit":
+                let sortDescriptor = NSSortDescriptor(keyPath: \Landmark.modificationDate, ascending: true)
+                fetchRequest.sortDescriptors = [sortDescriptor]
+            default:
+                break
+        }
+        
         if let searchQuery = searchQuery, !searchQuery.isEmpty {
-            let predicate = NSPredicate(format: "%K contains[cd] %@",
-                                        argumentArray: [#keyPath(Landmark.title), searchQuery])
+            let predicate = NSPredicate(format: "%K contains[cd] %@", argumentArray: [#keyPath(Landmark.title),searchQuery])
             predicates.append(predicate)
         }
         
@@ -108,6 +127,7 @@ public class CoreDataManager {
             subpredicates: predicates)
         
         fetchRequest.predicate = compoundPredicate
+        
         
         do {
             let result: [Landmark] = try container.viewContext.fetch(fetchRequest)

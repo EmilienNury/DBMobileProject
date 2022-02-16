@@ -8,7 +8,8 @@
 import UIKit
 
 class LandmarkViewController: UITableViewController {
-
+    @IBOutlet weak var filterLandmark: UIBarButtonItem!
+    
     //MARK: - Properties
     public var category: Category?
     private var landmarks: [Landmark] = []
@@ -19,14 +20,39 @@ class LandmarkViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let searchConroller = UISearchController(searchResultsController: nil)
+        searchConroller.searchResultsUpdater = self
+        navigationItem.searchController = searchConroller
+        
         landmarks = dbManagerInstance.fetchLandmarks(category: category)
         tableView.reloadData()
         title = category?.title
     }
     
-    @IBAction func filterLandmark(_ sender: Any) {
+    override func viewDidAppear(_ animated: Bool) {
+        let filterTitle = UIAction(title: "Trier par titre") { (action) in
+            self.landmarks = self.dbManagerInstance.fetchLandmarks( category: self.category, filter: "title")
+            self.tableView.reloadData()
+        }
         
+        let filterCreate = UIAction(title: "Trier par date de création") { (action) in
+            self.landmarks = self.dbManagerInstance.fetchLandmarks(category: self.category, filter: "create")
+            self.tableView.reloadData()
+        }
+        
+        let filterEdit = UIAction(title: "Trier par date d'édition") { (action) in
+            self.landmarks = self.dbManagerInstance.fetchLandmarks(category: self.category, filter: "edit")
+            self.tableView.reloadData()
+        }
+        
+        let actions = [filterTitle,filterCreate,filterEdit]
+                
+        let menu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: actions)
+                
+        filterLandmark.primaryAction = nil
+        filterLandmark.menu = menu
     }
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return landmarks.count
@@ -97,4 +123,12 @@ extension LandmarkViewController: AddLandmarkViewControllerDelegate{
         tableView.reloadData()
     }
     
+}
+
+extension LandmarkViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchQuery = searchController.searchBar.text
+        self.landmarks = self.dbManagerInstance.fetchLandmarks(searchQuery: searchQuery, category: self.category)
+        tableView.reloadData()
+    }
 }
