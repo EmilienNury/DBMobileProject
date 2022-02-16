@@ -67,7 +67,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Catégories" id="PMK-au-nPB">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" image="list.triangle" catalog="system" id="mNN-cN-sSp"/>
+                        <barButtonItem key="leftBarButtonItem" title="Filter" image="line.3.horizontal.decrease" catalog="system" id="mNN-cN-sSp"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="1k7-Un-rnG">
                             <connections>
                                 <action selector="AddBarButtonItemAction:" destination="F24-0b-wU6" id="eQH-G1-QHn"/>
@@ -144,11 +144,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Lieu" id="MH1-vX-xb5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="B7z-T3-Hon">
-                            <connections>
-                                <segue destination="809-mM-pKn" kind="presentation" identifier="addLandmark" id="n9S-GR-Bgv"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="line.3.horizontal.decrease" catalog="system" id="qsP-8s-bMh">
+                                <connections>
+                                    <action selector="filterLandmark:" destination="8vk-in-JGE" id="ZzD-WK-Yhq"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="B7z-T3-Hon">
+                                <connections>
+                                    <segue destination="809-mM-pKn" kind="presentation" identifier="addLandmark" id="n9S-GR-Bgv"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezD-8l-wE0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -232,7 +239,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="H2p-jP-jQ6">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JfN-Kw-wBI"/>
+                        <barButtonItem key="leftBarButtonItem" title="Annuler" id="JfN-Kw-wBI">
+                            <connections>
+                                <action selector="cancelAddLandmark:" destination="Yjh-YA-fJb" id="gd8-nn-GQI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descLandmark" destination="8J5-E1-nPD" id="K2k-wy-IkA"/>
@@ -374,7 +385,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="list.triangle" catalog="system" width="128" height="91"/>
+        <image name="line.3.horizontal.decrease" catalog="system" width="128" height="73"/>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="labelColor">

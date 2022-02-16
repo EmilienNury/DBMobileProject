@@ -24,6 +24,10 @@ class LandmarkViewController: UITableViewController {
         title = category?.title
     }
     
+    @IBAction func filterLandmark(_ sender: Any) {
+        
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return landmarks.count
     }
@@ -83,11 +87,14 @@ class LandmarkViewController: UITableViewController {
 }
 
 extension LandmarkViewController: AddLandmarkViewControllerDelegate{
+    func AddLandmarkViewControllerCancel(_ controller: AddLandmarkViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func AddLandmarkViewController(_ controller: AddLandmarkViewController) {
         dismiss(animated: true, completion: nil)
         landmarks = dbManagerInstance.fetchLandmarks(category: category)
         tableView.reloadData()
-        print(landmarks[0].desc!)
     }
     
 }
