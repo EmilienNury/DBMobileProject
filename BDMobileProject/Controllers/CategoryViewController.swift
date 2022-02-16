@@ -10,6 +10,8 @@ import CoreData
 
 class CategoryViewController: UITableViewController {
     
+    @IBOutlet weak var filter: UIBarButtonItem!
+    
     //MARK: - Properties
     
     private var categories: [Category] = []
@@ -23,6 +25,32 @@ class CategoryViewController: UITableViewController {
         categories = dbManagerInstance.fetchCategories()
         tableView.reloadData()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+                
+        let filterTitle = UIAction(title: "Trier par titre") { (action) in
+            self.categories = self.dbManagerInstance.fetchCategories(searchQuery: "title")
+            self.tableView.reloadData()
+        }
+        
+        let filterCreate = UIAction(title: "Trier par date de création") { (action) in
+            self.categories = self.dbManagerInstance.fetchCategories(searchQuery: "create")
+            self.tableView.reloadData()
+        }
+        
+        let filterEdit = UIAction(title: "Trier par date d'édition") { (action) in
+            self.categories = self.dbManagerInstance.fetchCategories(searchQuery: "edit")
+            self.tableView.reloadData()
+        }
+        
+        let actions = [filterTitle,filterCreate,filterEdit]
+                
+        let menu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: actions)
+                
+        filter.primaryAction = nil
+        filter.menu = menu
+    }
+
     
     @IBAction func AddBarButtonItemAction(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Nouvelle catégorie", message: "Ajouter une catégorie à la liste", preferredStyle: .alert)
