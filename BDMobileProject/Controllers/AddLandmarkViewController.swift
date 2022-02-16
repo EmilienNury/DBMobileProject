@@ -6,14 +6,27 @@
 //
 
 import UIKit
+import PhotosUI
 
-class AddLandmarkViewController: UIViewController{
+class AddLandmarkViewController: UIViewController, PHPickerViewControllerDelegate{
     
     @IBOutlet weak var titleLandmark: UITextField!
     @IBOutlet weak var descLandmark: UITextField!
     @IBOutlet weak var imageLandmark: UIImageView!
     @IBOutlet weak var latitudeLandmark: UITextField!
     @IBOutlet weak var longitudeLandmark: UITextField!
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        dismiss(animated: true, completion: nil)
+        results[0].itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+            DispatchQueue.main.async {
+                if let image = image as? UIImage {
+                     self.imageLandmark.image = image
+                }
+            }
+        }
+    }
+    
     public var category: Category?
     let dbManagerInstance = CoreDataManager.sharedInstance
     
@@ -32,6 +45,16 @@ class AddLandmarkViewController: UIViewController{
         self.dbManagerInstance.createLandmark(title: titleLandmark.text!, desc: descLandmark.text!, image: imageLandmark.image?.pngData(), category: category!, coordinate: coordinate)
         
         delegate?.AddLandmarkViewController(self)
+    }
+    
+    @IBAction func importImage(_ sender: Any) {
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 1
+        configuration.filter = .images
+        
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        self.present(picker, animated: true, completion: nil)
     }
 }
 

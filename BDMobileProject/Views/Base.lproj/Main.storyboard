@@ -176,12 +176,12 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Latitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="skl-SX-FG3">
-                                <rect key="frame" x="56" y="483" width="279" height="34"/>
+                                <rect key="frame" x="56" y="491" width="279" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Longitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SBC-K3-XdA">
-                                <rect key="frame" x="56" y="546" width="279" height="34"/>
+                                <rect key="frame" x="56" y="557" width="279" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -192,23 +192,27 @@
                                     <constraint firstAttribute="width" secondItem="yeg-7N-cET" secondAttribute="height" multiplier="123:10" constant="-2156.5" id="d9S-2x-7W0"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PK1-aa-Hms">
-                                <rect key="frame" x="180" y="412" width="31" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49.329999999999998" id="XCh-YG-U1q"/>
-                                </constraints>
-                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Titre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WtW-KO-v07">
                                 <rect key="frame" x="56" y="56" width="279" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83q-LL-5nd">
-                                <rect key="frame" x="154" y="606" width="83" height="31"/>
+                                <rect key="frame" x="154" y="623" width="83" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Ajouter"/>
                                 <connections>
                                     <action selector="addLandmark:" destination="Yjh-YA-fJb" eventType="touchDown" id="W9r-z5-DRK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA8-BN-1Db">
+                                <rect key="frame" x="145.66666666666666" y="421" width="99" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Importer">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="importImage:" destination="Yjh-YA-fJb" eventType="touchUpInside" id="lOP-Uv-Nz6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -216,15 +220,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8J5-E1-nPD" firstAttribute="top" secondItem="WtW-KO-v07" secondAttribute="bottom" constant="26" id="2xT-Os-rpF"/>
-                            <constraint firstItem="83q-LL-5nd" firstAttribute="top" secondItem="SBC-K3-XdA" secondAttribute="bottom" constant="26" id="78V-H9-3GY"/>
-                            <constraint firstItem="PK1-aa-Hms" firstAttribute="top" secondItem="yeg-7N-cET" secondAttribute="bottom" constant="8.0000000000001137" id="8HB-ei-M0m"/>
+                            <constraint firstItem="skl-SX-FG3" firstAttribute="top" secondItem="EA8-BN-1Db" secondAttribute="bottom" constant="32" id="4WK-RW-k27"/>
+                            <constraint firstItem="83q-LL-5nd" firstAttribute="top" secondItem="SBC-K3-XdA" secondAttribute="bottom" constant="32" id="78V-H9-3GY"/>
                             <constraint firstItem="JVJ-ge-5eN" firstAttribute="trailing" secondItem="WtW-KO-v07" secondAttribute="trailing" constant="55" id="9Ua-aw-NWj"/>
-                            <constraint firstItem="skl-SX-FG3" firstAttribute="top" secondItem="PK1-aa-Hms" secondAttribute="bottom" constant="20.666666666666686" id="Hsu-B2-QWT"/>
                             <constraint firstItem="WtW-KO-v07" firstAttribute="top" secondItem="JVJ-ge-5eN" secondAttribute="top" id="LDN-RV-NmK"/>
                             <constraint firstItem="WtW-KO-v07" firstAttribute="leading" secondItem="JVJ-ge-5eN" secondAttribute="leading" constant="56" id="OtP-M7-6v7"/>
+                            <constraint firstItem="EA8-BN-1Db" firstAttribute="top" secondItem="yeg-7N-cET" secondAttribute="bottom" constant="16" id="S32-NF-hA2"/>
                             <constraint firstItem="SBC-K3-XdA" firstAttribute="leading" secondItem="JVJ-ge-5eN" secondAttribute="leading" constant="56" id="TZT-dw-j90"/>
                             <constraint firstItem="yeg-7N-cET" firstAttribute="leading" secondItem="JVJ-ge-5eN" secondAttribute="leading" constant="74" id="VBn-io-Kp2"/>
-                            <constraint firstItem="PK1-aa-Hms" firstAttribute="leading" secondItem="JVJ-ge-5eN" secondAttribute="leading" constant="180" id="Wth-GG-6ZM"/>
                             <constraint firstItem="JVJ-ge-5eN" firstAttribute="trailing" secondItem="yeg-7N-cET" secondAttribute="trailing" constant="74" id="aTs-4D-jhg"/>
                             <constraint firstItem="JVJ-ge-5eN" firstAttribute="trailing" secondItem="8J5-E1-nPD" secondAttribute="trailing" constant="55" id="bB3-dU-Mdm"/>
                             <constraint firstItem="yeg-7N-cET" firstAttribute="top" secondItem="8J5-E1-nPD" secondAttribute="bottom" constant="59.999999999999858" id="cz7-la-Cvw"/>
@@ -232,8 +235,8 @@
                             <constraint firstItem="83q-LL-5nd" firstAttribute="leading" secondItem="JVJ-ge-5eN" secondAttribute="leading" constant="154" id="fJ0-zh-AVl"/>
                             <constraint firstItem="JVJ-ge-5eN" firstAttribute="trailing" secondItem="83q-LL-5nd" secondAttribute="trailing" constant="153" id="hvv-n1-Tzm"/>
                             <constraint firstItem="JVJ-ge-5eN" firstAttribute="trailing" secondItem="SBC-K3-XdA" secondAttribute="trailing" constant="55" id="i5S-OB-Qao"/>
-                            <constraint firstItem="SBC-K3-XdA" firstAttribute="top" secondItem="skl-SX-FG3" secondAttribute="bottom" constant="29" id="oad-Mw-EIZ"/>
-                            <constraint firstItem="JVJ-ge-5eN" firstAttribute="trailing" secondItem="PK1-aa-Hms" secondAttribute="trailing" constant="179" id="xs0-IX-Ghd"/>
+                            <constraint firstItem="SBC-K3-XdA" firstAttribute="top" secondItem="skl-SX-FG3" secondAttribute="bottom" constant="32" id="oad-Mw-EIZ"/>
+                            <constraint firstItem="EA8-BN-1Db" firstAttribute="centerX" secondItem="H67-xu-N60" secondAttribute="centerX" id="qwn-Qx-nMS"/>
                             <constraint firstItem="8J5-E1-nPD" firstAttribute="leading" secondItem="JVJ-ge-5eN" secondAttribute="leading" constant="56" id="xuL-c4-pE9"/>
                             <constraint firstItem="skl-SX-FG3" firstAttribute="leading" secondItem="JVJ-ge-5eN" secondAttribute="leading" constant="56" id="yzY-wQ-684"/>
                         </constraints>
@@ -402,7 +405,6 @@
     <resources>
         <image name="line.3.horizontal.decrease" catalog="system" width="128" height="73"/>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
