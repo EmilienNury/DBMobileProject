@@ -32,9 +32,9 @@ class LandmarkViewController: UITableViewController {
         let cellLandmark = tableView.dequeueReusableCell(withIdentifier: "cellLandmark", for: indexPath) as! LandmarkItemCell
         let landmark = landmarks[indexPath.row]
         cellLandmark.titleLandmark.text = landmark.title
-        cellLandmark.descriptionLandmark.text = landmark.description
-        //TODO faire pour l'image
-        //cellLandmark.imageLandmark =
+        cellLandmark.descriptionLandmark.text = landmark.desc
+        cellLandmark.imageLandmark.image = UIImage(data: landmark.image!)
+        
         return cellLandmark
     }
 
@@ -63,7 +63,8 @@ class LandmarkViewController: UITableViewController {
                   let destination = naviguationController.topViewController as? AddLandmarkViewController else{
                       return
                   }
-            
+            destination.delegate = self
+            destination.category = category
             destination.title = "Ajouter un lieu"
             
         case"detailLandmark":
@@ -72,15 +73,21 @@ class LandmarkViewController: UITableViewController {
                       return
                   }
             
-            destination.title = "Ajouter un lieu"
+            destination.landmark = landmarks[tableView.indexPath(for: sender as! UITableViewCell)?.row ?? 0]
+            destination.title = destination.landmark?.title
             
         default:
             fatalError()
         }
     }
-    
-    
-    
-    
+}
 
+extension LandmarkViewController: AddLandmarkViewControllerDelegate{
+    func AddLandmarkViewController(_ controller: AddLandmarkViewController) {
+        dismiss(animated: true, completion: nil)
+        landmarks = dbManagerInstance.fetchLandmarks()
+        tableView.reloadData()
+        print(landmarks[0].desc!)
+    }
+    
 }

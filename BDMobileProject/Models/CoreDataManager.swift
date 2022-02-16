@@ -57,12 +57,14 @@ public class CoreDataManager {
         }
     }
     
-    public func createCoordinate(longitude: Double, latitude: Double) {
+    public func createCoordinate(longitude: Double, latitude: Double) -> Coordinate{
         let coordinate = Coordinate(context: container.viewContext)
         coordinate.longitude = longitude
         coordinate.latitude = latitude
         
         saveContext()
+        
+        return coordinate
     }
     
     public func deleteCoordinate(coordinate: Coordinate) {
