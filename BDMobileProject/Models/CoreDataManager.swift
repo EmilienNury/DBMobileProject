@@ -24,6 +24,20 @@ public class CoreDataManager {
     public func fetchCategories(searchQuery: String? = nil) -> [Category] {
         let fetchRequest = Category.fetchRequest()
         
+        switch searchQuery{
+        case "title":
+            let sortDescriptor = NSSortDescriptor(keyPath: \Category.title, ascending: true)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+        case "create":
+            let sortDescriptor = NSSortDescriptor(keyPath: \Category.creationDate, ascending: true)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+        case "edit":
+            let sortDescriptor = NSSortDescriptor(keyPath: \Category.modificationDate, ascending: true)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+        default:
+            break
+        }
+        
         do {
             let result: [Category] = try container.viewContext.fetch(fetchRequest)
             return result
