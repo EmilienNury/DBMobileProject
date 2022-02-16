@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -68,21 +67,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Catégories" id="PMK-au-nPB">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" image="list.triangle" catalog="system" id="mNN-cN-sSp">
-                            <menu key="menu" title="Sub Menu" id="u5j-fa-fIM">
-                                <children>
-                                    <command title="Trier par titre" id="sTc-eM-HzX"/>
-                                    <command title="Trier par date de création" id="R8t-cN-n9J"/>
-                                    <command title="Trier par date d'édition" id="0j2-Od-Ptv"/>
-                                </children>
-                            </menu>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Filter" image="list.triangle" catalog="system" id="mNN-cN-sSp"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="1k7-Un-rnG">
                             <connections>
                                 <action selector="AddBarButtonItemAction:" destination="F24-0b-wU6" id="eQH-G1-QHn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="filter" destination="mNN-cN-sSp" id="RyX-3j-hYe"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNs-LG-64p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
