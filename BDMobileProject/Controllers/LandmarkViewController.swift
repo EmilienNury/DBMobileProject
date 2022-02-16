@@ -19,7 +19,7 @@ class LandmarkViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        landmarks = dbManagerInstance.fetchLandmarks()
+        landmarks = dbManagerInstance.fetchLandmarks(category: category)
         tableView.reloadData()
         title = category?.title
     }
@@ -85,7 +85,7 @@ class LandmarkViewController: UITableViewController {
 extension LandmarkViewController: AddLandmarkViewControllerDelegate{
     func AddLandmarkViewController(_ controller: AddLandmarkViewController) {
         dismiss(animated: true, completion: nil)
-        landmarks = dbManagerInstance.fetchLandmarks()
+        landmarks = dbManagerInstance.fetchLandmarks(category: category)
         tableView.reloadData()
         print(landmarks[0].desc!)
     }
