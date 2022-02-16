@@ -8,7 +8,29 @@
 import UIKit
 
 class AddLandmarkViewController: UIViewController{
+    
+    @IBOutlet weak var titleLandmark: UITextField!
+    @IBOutlet weak var descLandmark: UITextField!
+    @IBOutlet weak var imageLandmark: UIImageView!
+    @IBOutlet weak var latitudeLandmark: UITextField!
+    @IBOutlet weak var longitudeLandmark: UITextField!
+    public var category: Category?
+    let dbManagerInstance = CoreDataManager.sharedInstance
+    
+    var delegate: AddLandmarkViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func addLandmark(_ sender: Any) {
+        let coordinate = self.dbManagerInstance.createCoordinate(longitude: (longitudeLandmark.text! as NSString).doubleValue, latitude: (latitudeLandmark.text! as NSString).doubleValue)
+        self.dbManagerInstance.createLandmark(title: titleLandmark.text!, desc: descLandmark.text!, image: imageLandmark.image?.pngData(), category: category!, coordinate: coordinate)
+        
+        delegate?.AddLandmarkViewController(self)
+    }
+}
+
+protocol AddLandmarkViewControllerDelegate: AnyObject{
+    func AddLandmarkViewController(_ controller: AddLandmarkViewController)
 }
