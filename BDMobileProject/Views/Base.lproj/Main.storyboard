@@ -353,7 +353,13 @@
                             <constraint firstItem="lgn-5o-NmA" firstAttribute="top" secondItem="AqS-vh-roZ" secondAttribute="bottom" constant="32" id="tRg-63-dVA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tNX-in-vOW"/>
+                    <navigationItem key="navigationItem" id="tNX-in-vOW">
+                        <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.backward.circle" catalog="system" id="MFi-Ip-cQF">
+                            <connections>
+                                <action selector="Cancel:" destination="Kkd-y8-XDz" id="A85-D4-Sv7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="creationDateLandmark" destination="lgn-5o-NmA" id="qKM-ft-GWL"/>
                         <outlet property="descLandmark" destination="5rk-S1-led" id="QbX-n4-mPi"/>
@@ -428,6 +434,7 @@
         <segue reference="Ueh-EL-m0u"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrowshape.turn.up.backward.circle" catalog="system" width="128" height="121"/>
         <image name="line.3.horizontal.decrease" catalog="system" width="128" height="73"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>
