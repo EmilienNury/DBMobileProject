@@ -399,8 +399,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gRp-9P-ZXh">
-                                <rect key="frame" x="0.0" y="44" width="390" height="717"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gRp-9P-ZXh">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="Hvw-uv-dRq"/>
                                     <constraint firstAttribute="width" id="rRq-1n-fRZ"/>
@@ -412,7 +412,7 @@
                         <constraints>
                             <constraint firstItem="gRp-9P-ZXh" firstAttribute="leading" secondItem="6N3-1N-ADr" secondAttribute="leading" id="EMa-hX-VKf"/>
                             <constraint firstItem="6N3-1N-ADr" firstAttribute="trailing" secondItem="gRp-9P-ZXh" secondAttribute="trailing" id="P6r-QX-o0H"/>
-                            <constraint firstItem="gRp-9P-ZXh" firstAttribute="top" secondItem="6N3-1N-ADr" secondAttribute="top" id="YkA-vj-etY"/>
+                            <constraint firstItem="gRp-9P-ZXh" firstAttribute="top" secondItem="UZp-yc-too" secondAttribute="top" id="YkA-vj-etY"/>
                             <constraint firstItem="6N3-1N-ADr" firstAttribute="bottom" secondItem="gRp-9P-ZXh" secondAttribute="bottom" id="caD-ke-kbJ"/>
                         </constraints>
                     </view>
