@@ -29,31 +29,51 @@ class CategoryViewController: UITableViewController {
         categories = dbManagerInstance.fetchCategories()
         tableView.reloadData()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
-                
-        let filterTitle = UIAction(title: "Trier par titre") { (action) in
+        filter.primaryAction = nil
+        filter.menu = generatePullDownMenu()
+    }
+    
+    var titleFilter = true
+    var createFilter = false
+    var editFilter = false
+    
+    private func generatePullDownMenu() -> UIMenu{
+        let filterTitle = UIAction(title: "Trier par titre",state: titleFilter ? .on : .off) { (action) in
             self.categories = self.dbManagerInstance.fetchCategories()
             self.tableView.reloadData()
+            self.titleFilter = true
+            self.createFilter = false
+            self.editFilter = false
+            self.filter.menu = self.generatePullDownMenu()
         }
         
-        let filterCreate = UIAction(title: "Trier par date de création") { (action) in
+        let filterCreate = UIAction(title: "Trier par date de création",state: createFilter ? .on : .off) { (action) in
             self.categories = self.dbManagerInstance.fetchCategories(filter: "create")
             self.tableView.reloadData()
+            self.titleFilter = false
+            self.createFilter = true
+            self.editFilter = false
+            self.filter.menu = self.generatePullDownMenu()
         }
         
-        let filterEdit = UIAction(title: "Trier par date d'édition") { (action) in
+        let filterEdit = UIAction(title: "Trier par date d'édition",state: editFilter ? .on : .off) { (action) in
             self.categories = self.dbManagerInstance.fetchCategories(filter: "edit")
             self.tableView.reloadData()
+            self.titleFilter = false
+            self.createFilter = false
+            self.editFilter = true
+            self.filter.menu = self.generatePullDownMenu()
         }
         
         let actions = [filterTitle,filterCreate,filterEdit]
-                
+            
         let menu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: actions)
                 
-        filter.primaryAction = nil
-        filter.menu = menu
+        return menu
     }
+    
 
     
     @IBAction func AddBarButtonItemAction(_ sender: UIBarButtonItem) {
