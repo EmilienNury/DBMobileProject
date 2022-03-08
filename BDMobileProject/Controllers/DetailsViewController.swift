@@ -16,6 +16,10 @@ class DetailsViewController: UIViewController{
     @IBOutlet weak var modificationDateLandmark: UILabel!
     @IBOutlet weak var imageLandmark: UIImageView!
     
+    @IBAction func Cancel(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,10 +29,6 @@ class DetailsViewController: UIViewController{
         creationDateLandmark.text = "created: " + DateFormatter.localizedString(from: landmark!.creationDate!, dateStyle: .short, timeStyle: .short)
         modificationDateLandmark.text = "modified: " + DateFormatter.localizedString(from: landmark!.modificationDate!, dateStyle: .short, timeStyle: .short)
         imageLandmark.image = UIImage(data: landmark!.image!)
-    }
-    
-    @IBAction func Back(_ sender: Any) {
-        dismiss(animated: true)
     }
     
 }

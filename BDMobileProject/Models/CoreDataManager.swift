@@ -21,18 +21,18 @@ public class CoreDataManager {
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
     
-    public func fetchCategories(searchQuery: String? = nil,filter: String? = nil) -> [Category] {
+    public func fetchCategories(ascent: Bool , searchQuery: String? = nil,filter: String? = nil) -> [Category] {
         let fetchRequest = Category.fetchRequest()
         
         switch filter{
         case "create":
-            let sortDescriptor = NSSortDescriptor(keyPath: \Category.creationDate, ascending: true)
+            let sortDescriptor = NSSortDescriptor(keyPath: \Category.creationDate, ascending: ascent)
             fetchRequest.sortDescriptors = [sortDescriptor]
         case "edit":
-            let sortDescriptor = NSSortDescriptor(keyPath: \Category.modificationDate, ascending: true)
+            let sortDescriptor = NSSortDescriptor(keyPath: \Category.modificationDate, ascending: ascent)
             fetchRequest.sortDescriptors = [sortDescriptor]
         default:
-            let sortDescriptor = NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:)))
+            let sortDescriptor = NSSortDescriptor(key: "title", ascending: ascent, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:)))
             fetchRequest.sortDescriptors = [sortDescriptor]
         }
         
@@ -95,20 +95,20 @@ public class CoreDataManager {
         saveContext()
     }
     
-    public func fetchLandmarks(searchQuery: String? = nil, category: Category?,filter: String? = nil) -> [Landmark] {
+    public func fetchLandmarks(ascent: Bool, searchQuery: String? = nil, category: Category?,filter: String? = nil) -> [Landmark] {
         let fetchRequest = Landmark.fetchRequest()
         
         var predicates: [NSPredicate] = []
         
         switch filter{
             case "create":
-                let sortDescriptor = NSSortDescriptor(keyPath: \Landmark.creationDate, ascending: true)
+                let sortDescriptor = NSSortDescriptor(keyPath: \Landmark.creationDate, ascending: ascent)
                 fetchRequest.sortDescriptors = [sortDescriptor]
             case "edit":
-                let sortDescriptor = NSSortDescriptor(keyPath: \Landmark.modificationDate, ascending: true)
+                let sortDescriptor = NSSortDescriptor(keyPath: \Landmark.modificationDate, ascending: ascent)
                 fetchRequest.sortDescriptors = [sortDescriptor]
             default:
-            let sortDescriptor = NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:)))
+            let sortDescriptor = NSSortDescriptor(key: "title", ascending: ascent, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:)))
                 fetchRequest.sortDescriptors = [sortDescriptor]
         }
         
