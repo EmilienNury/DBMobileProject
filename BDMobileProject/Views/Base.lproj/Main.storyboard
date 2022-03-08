@@ -85,7 +85,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="filter" destination="mNN-cN-sSp" id="RyX-3j-hYe"/>
+                        <outlet property="filterCategory" destination="mNN-cN-sSp" id="u0Y-2s-2Qz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNs-LG-64p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -353,7 +353,13 @@
                             <constraint firstItem="lgn-5o-NmA" firstAttribute="top" secondItem="AqS-vh-roZ" secondAttribute="bottom" constant="32" id="tRg-63-dVA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tNX-in-vOW"/>
+                    <navigationItem key="navigationItem" id="tNX-in-vOW">
+                        <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.backward.circle" catalog="system" id="xT8-Az-soB">
+                            <connections>
+                                <action selector="Cancel:" destination="Kkd-y8-XDz" id="fe6-b1-OvJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="creationDateLandmark" destination="lgn-5o-NmA" id="qKM-ft-GWL"/>
                         <outlet property="descLandmark" destination="5rk-S1-led" id="QbX-n4-mPi"/>
@@ -481,6 +487,7 @@
         <segue reference="Ueh-EL-m0u"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrowshape.turn.up.backward.circle" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="line.3.horizontal.decrease" catalog="system" width="128" height="73"/>
         <image name="map" catalog="system" width="128" height="110"/>
