@@ -10,7 +10,7 @@ import CoreData
 
 class CategoryViewController: UITableViewController {
     
-    @IBOutlet weak var filter: UIBarButtonItem!
+    @IBOutlet weak var filterCategory: UIBarButtonItem!
     
     //MARK: - Properties
     
@@ -26,45 +26,49 @@ class CategoryViewController: UITableViewController {
         searchConroller.searchResultsUpdater = self
         navigationItem.searchController = searchConroller
         
-        categories = dbManagerInstance.fetchCategories()
+        categories = dbManagerInstance.fetchCategories(ascent: true)
         tableView.reloadData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        filter.primaryAction = nil
-        filter.menu = generatePullDownMenu()
+        filterCategory.primaryAction = nil
+        filterCategory.menu = generatePullDownMenu()
     }
     
-    var titleFilter = true
-    var createFilter = false
-    var editFilter = false
+    var filter = Filter.title
+    var ascent = true
     
     private func generatePullDownMenu() -> UIMenu{
-        let filterTitle = UIAction(title: "Trier par titre",state: titleFilter ? .on : .off) { (action) in
-            self.categories = self.dbManagerInstance.fetchCategories()
+ 
+        
+        let filterTitle = UIAction(title: "Trier par titre",
+                                   image: filter == .title  ? ascent ? UIImage(systemName: "chevron.up"): UIImage(systemName: "chevron.down") : nil,
+                                   state: filter == .title  ? .on : .off) { (action) in
+            self.filter = Filter.title
+            self.ascent = self.ascent ? false : true
+            self.filterCategory.menu = self.generatePullDownMenu()
+            self.categories = self.dbManagerInstance.fetchCategories(ascent: self.ascent)
             self.tableView.reloadData()
-            self.titleFilter = true
-            self.createFilter = false
-            self.editFilter = false
-            self.filter.menu = self.generatePullDownMenu()
         }
         
-        let filterCreate = UIAction(title: "Trier par date de création",state: createFilter ? .on : .off) { (action) in
-            self.categories = self.dbManagerInstance.fetchCategories(filter: "create")
+        let filterCreate = UIAction(title: "Trier par date de création",
+                                    image: filter == .create ? ascent ? UIImage(systemName: "chevron.up"): UIImage(systemName: "chevron.down") : nil,
+                                    state: filter == .create ? .on : .off) { (action) in
+            self.filter = Filter.create
+            self.ascent = self.ascent ? false : true
+            self.filterCategory.menu = self.generatePullDownMenu()
+            self.categories = self.dbManagerInstance.fetchCategories(ascent: self.ascent,filter: "create")
             self.tableView.reloadData()
-            self.titleFilter = false
-            self.createFilter = true
-            self.editFilter = false
-            self.filter.menu = self.generatePullDownMenu()
         }
         
-        let filterEdit = UIAction(title: "Trier par date d'édition",state: editFilter ? .on : .off) { (action) in
-            self.categories = self.dbManagerInstance.fetchCategories(filter: "edit")
+        let filterEdit = UIAction(title: "Trier par date d'édition",
+                                  image: filter == .edit ? ascent ? UIImage(systemName: "chevron.up"): UIImage(systemName: "chevron.down") : nil,
+                                  state: filter == .edit ? .on : .off) { (action) in
+            self.filter = Filter.edit
+            self.ascent = self.ascent ? false : true
+            self.filterCategory.menu = self.generatePullDownMenu()
+            self.categories = self.dbManagerInstance.fetchCategories(ascent: self.ascent,filter: "edit")
             self.tableView.reloadData()
-            self.titleFilter = false
-            self.createFilter = false
-            self.editFilter = true
-            self.filter.menu = self.generatePullDownMenu()
         }
         
         let actions = [filterTitle,filterCreate,filterEdit]
@@ -91,7 +95,7 @@ class CategoryViewController: UITableViewController {
             }
             
             self.dbManagerInstance.createCategory(title: textField.text!)
-            self.categories = self.dbManagerInstance.fetchCategories()
+            self.categories = self.dbManagerInstance.fetchCategories(ascent: true)
             self.tableView.reloadData()
         }
         
@@ -127,7 +131,7 @@ class CategoryViewController: UITableViewController {
                 }
                 
                 self.dbManagerInstance.editCategory(category: category, newTitle: textField.text!)
-                self.categories = self.dbManagerInstance.fetchCategories()
+                self.categories = self.dbManagerInstance.fetchCategories(ascent: true)
                 self.tableView.reloadData()
             }
             
@@ -173,9 +177,14 @@ class CategoryViewController: UITableViewController {
 extension CategoryViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         let searchQuery = searchController.searchBar.text
-        self.categories = self.dbManagerInstance.fetchCategories(searchQuery: searchQuery)
+        self.categories = self.dbManagerInstance.fetchCategories(ascent: true, searchQuery: searchQuery)
         tableView.reloadData()
     }
 }
 
+enum Filter: Equatable{
+    case title
+    case create
+    case edit
+}
 

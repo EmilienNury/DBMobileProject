@@ -24,7 +24,7 @@ class LandmarkViewController: UITableViewController {
         searchConroller.searchResultsUpdater = self
         navigationItem.searchController = searchConroller
         
-        landmarks = dbManagerInstance.fetchLandmarks(category: category)
+        landmarks = dbManagerInstance.fetchLandmarks(ascent: true, category: category)
         tableView.reloadData()
         title = category?.title
     }
@@ -34,36 +34,42 @@ class LandmarkViewController: UITableViewController {
         filterLandmark.menu = generatePullDownMenu()
     }
     
-    var titleFilter = true
-    var createFilter = false
-    var editFilter = false
+    var filter = Filter.title
+    var ascent = true
     
     private func generatePullDownMenu() -> UIMenu{
-        let filterTitle = UIAction(title: "Trier par titre",state: titleFilter ? .on : .off) { (action) in
-            self.landmarks = self.dbManagerInstance.fetchLandmarks( category: self.category)
-            self.tableView.reloadData()
-            self.titleFilter = true
-            self.createFilter = false
-            self.editFilter = false
+        let filterTitle = UIAction(title: "Trier par titre",
+                                   image: filter == .title  ? ascent ? UIImage(systemName: "chevron.up"): UIImage(systemName: "chevron.down") : nil,
+                                   state: filter == .title  ? .on : .off) { (action) in
+            self.filter = Filter.title
+            self.ascent = self.ascent ? false : true
             self.filterLandmark.menu = self.generatePullDownMenu()
+            
+            self.landmarks = self.dbManagerInstance.fetchLandmarks(ascent: self.ascent, category: self.category)
+            self.tableView.reloadData()
+
         }
         
-        let filterCreate = UIAction(title: "Trier par date de création",state: createFilter ? .on : .off) { (action) in
-            self.landmarks = self.dbManagerInstance.fetchLandmarks(category: self.category, filter: "create")
-            self.tableView.reloadData()
-            self.titleFilter = false
-            self.createFilter = true
-            self.editFilter = false
+        let filterCreate = UIAction(title: "Trier par date de création",
+                                    image: filter == .create ? ascent ? UIImage(systemName: "chevron.up"): UIImage(systemName: "chevron.down") : nil,
+                                    state: filter == .create ? .on : .off) { (action) in
+            self.filter = Filter.create
+            self.ascent = self.ascent ? false : true
             self.filterLandmark.menu = self.generatePullDownMenu()
+            
+            self.landmarks = self.dbManagerInstance.fetchLandmarks(ascent: self.ascent,category: self.category, filter: "create")
+            self.tableView.reloadData()
         }
         
-        let filterEdit = UIAction(title: "Trier par date d'édition",state: editFilter ? .on : .off) { (action) in
-            self.landmarks = self.dbManagerInstance.fetchLandmarks(category: self.category, filter: "edit")
-            self.tableView.reloadData()
-            self.titleFilter = false
-            self.createFilter = false
-            self.editFilter = true
+        let filterEdit = UIAction(title: "Trier par date d'édition",
+                                  image: filter == .edit ? ascent ? UIImage(systemName: "chevron.up"): UIImage(systemName: "chevron.down") : nil,
+                                  state: filter == .edit ? .on : .off) { (action) in
+            self.filter = Filter.edit
+            self.ascent = self.ascent ? false : true
             self.filterLandmark.menu = self.generatePullDownMenu()
+            
+            self.landmarks = self.dbManagerInstance.fetchLandmarks(ascent: self.ascent,category: self.category, filter: "edit")
+            self.tableView.reloadData()
         }
         
         let actions = [filterTitle,filterCreate,filterEdit]
@@ -152,7 +158,7 @@ extension LandmarkViewController: AddLandmarkViewControllerDelegate{
     
     func AddLandmarkViewController(_ controller: AddLandmarkViewController) {
         dismiss(animated: true, completion: nil)
-        landmarks = dbManagerInstance.fetchLandmarks(category: category)
+        landmarks = dbManagerInstance.fetchLandmarks(ascent: self.ascent,category: category)
         tableView.reloadData()
     }
     
@@ -161,7 +167,9 @@ extension LandmarkViewController: AddLandmarkViewControllerDelegate{
 extension LandmarkViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         let searchQuery = searchController.searchBar.text
-        self.landmarks = self.dbManagerInstance.fetchLandmarks(searchQuery: searchQuery, category: self.category)
+        self.landmarks = self.dbManagerInstance.fetchLandmarks(ascent: self.ascent,searchQuery: searchQuery, category: self.category)
         tableView.reloadData()
     }
 }
+
+
