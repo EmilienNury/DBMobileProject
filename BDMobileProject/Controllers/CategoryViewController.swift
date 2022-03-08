@@ -93,10 +93,11 @@ class CategoryViewController: UITableViewController {
                 let textField  = alertController.textFields?.first else{
                 return
             }
-            
-            self.dbManagerInstance.createCategory(title: textField.text!)
-            self.categories = self.dbManagerInstance.fetchCategories(ascent: true)
-            self.tableView.reloadData()
+            if !textField.text!.isEmpty {
+                self.dbManagerInstance.createCategory(title: textField.text!)
+                self.categories = self.dbManagerInstance.fetchCategories(ascent: true)
+                self.tableView.reloadData()
+            }
         }
         
         alertController.addAction(cancelAction)

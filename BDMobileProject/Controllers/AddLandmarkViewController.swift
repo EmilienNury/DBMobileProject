@@ -56,14 +56,21 @@ class AddLandmarkViewController: UIViewController, PHPickerViewControllerDelegat
     
     @IBAction func addLandmark(_ sender: Any) {
         if landmarkToEdit == nil {
-            let coordinate = self.dbManagerInstance.createCoordinate(longitude: (longitudeLandmark.text! as NSString).doubleValue, latitude: (latitudeLandmark.text! as NSString).doubleValue)
-            self.dbManagerInstance.createLandmark(title: titleLandmark.text!, desc: descLandmark.text!, image: imageLandmark.image?.pngData(), category: category!, coordinate: coordinate)
+            if (!longitudeLandmark.text!.isEmpty && !latitudeLandmark.text!.isEmpty && !titleLandmark.text!.isEmpty) {
+                let coordinate = self.dbManagerInstance.createCoordinate(longitude: (longitudeLandmark.text! as NSString).doubleValue, latitude: (latitudeLandmark.text! as NSString).doubleValue)
+                self.dbManagerInstance.createLandmark(title: titleLandmark.text!, desc: descLandmark.text!, image: imageLandmark.image?.pngData(), category: category!, coordinate: coordinate)
+                delegate?.AddLandmarkViewController(self)
+            } else {
+                let alertController = UIAlertController(title: "Champs obligatoires", message: "Veuillez renseigner au minimum le titre et les coordonnées", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                present(alertController, animated: true)
+            }
         } else {
             let coordinate = self.dbManagerInstance.createCoordinate(longitude: (longitudeLandmark.text! as NSString).doubleValue, latitude: (latitudeLandmark.text! as NSString).doubleValue)
             self.dbManagerInstance.editLandmark(landmark: landmarkToEdit!, newTitle: titleLandmark.text!, newDesc: descLandmark.text!, newImage: (imageLandmark.image?.pngData())!, newCoordinate: coordinate)
+            delegate?.AddLandmarkViewController(self)
         }
-        
-        delegate?.AddLandmarkViewController(self)
     }
     
     @IBAction func importImage(_ sender: Any) {
