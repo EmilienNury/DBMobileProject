@@ -12,4 +12,9 @@ class CategoryItemCell: UITableViewCell{
     @IBOutlet weak var titleCategory: UILabel!
     @IBOutlet weak var created: UILabel!
     @IBOutlet weak var edited: UILabel!
+    var buttonAction : (() -> ())?
+    
+    @IBAction func editCategory(_ sender: Any) {
+        buttonAction?()
+    }
 }

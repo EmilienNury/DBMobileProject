@@ -42,15 +42,25 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lE9-Lz-DEw" userLabel="EditButton">
+                                            <rect key="frame" x="287" y="11" width="43" height="31"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" title=""/>
+                                            <connections>
+                                                <action selector="editCategory:" destination="lwC-8E-bBq" eventType="touchDown" id="znu-cS-R6y"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="wam-qH-lmz" firstAttribute="leading" secondItem="4pH-oL-Dry" secondAttribute="leadingMargin" id="A3H-sH-diX"/>
+                                        <constraint firstItem="lE9-Lz-DEw" firstAttribute="top" secondItem="4pH-oL-Dry" secondAttribute="topMargin" id="JIw-UK-CCV"/>
                                         <constraint firstItem="KQf-rK-c1s" firstAttribute="top" secondItem="4pH-oL-Dry" secondAttribute="topMargin" id="La6-Gc-NDf"/>
                                         <constraint firstItem="LXo-sR-fjA" firstAttribute="trailing" secondItem="4pH-oL-Dry" secondAttribute="trailingMargin" id="fFC-Nz-GQL"/>
                                         <constraint firstItem="LXo-sR-fjA" firstAttribute="bottom" secondItem="4pH-oL-Dry" secondAttribute="bottomMargin" id="hxo-SQ-vBm"/>
                                         <constraint firstItem="KQf-rK-c1s" firstAttribute="leading" secondItem="4pH-oL-Dry" secondAttribute="leadingMargin" id="lFa-lI-B0O"/>
                                         <constraint firstItem="wam-qH-lmz" firstAttribute="bottom" secondItem="4pH-oL-Dry" secondAttribute="bottomMargin" id="n3R-Dc-yOQ"/>
                                         <constraint firstItem="wam-qH-lmz" firstAttribute="top" secondItem="KQf-rK-c1s" secondAttribute="bottom" constant="45" id="rDO-Sn-Q1P"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="lE9-Lz-DEw" secondAttribute="trailing" id="ylX-lI-b2X"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -117,11 +127,21 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2i-TD-SH9" userLabel="EditButton">
+                                            <rect key="frame" x="291" y="68" width="43" height="31"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" title=""/>
+                                            <connections>
+                                                <segue destination="809-mM-pKn" kind="show" identifier="editLandmark" id="Ueh-EL-m0u"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="ncC-L8-flE" firstAttribute="leading" secondItem="t1Q-qI-jCZ" secondAttribute="trailing" constant="8" id="5BY-f0-sba"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="t1Q-qI-jCZ" secondAttribute="bottom" constant="9" id="B8h-Ma-Abu"/>
+                                        <constraint firstItem="b2i-TD-SH9" firstAttribute="centerY" secondItem="Des-Va-PE6" secondAttribute="centerY" id="Dto-tr-y6Z"/>
                                         <constraint firstItem="kAY-m1-Ymo" firstAttribute="top" secondItem="ncC-L8-flE" secondAttribute="bottom" constant="20" id="TKl-YR-ieE"/>
+                                        <constraint firstAttribute="trailing" secondItem="b2i-TD-SH9" secondAttribute="trailing" constant="16" id="X0i-XD-0NB"/>
                                         <constraint firstItem="kAY-m1-Ymo" firstAttribute="trailing" secondItem="Des-Va-PE6" secondAttribute="trailingMargin" id="au0-a1-avY"/>
                                         <constraint firstItem="t1Q-qI-jCZ" firstAttribute="leading" secondItem="Des-Va-PE6" secondAttribute="leadingMargin" id="b7q-rm-XVv"/>
                                         <constraint firstItem="ncC-L8-flE" firstAttribute="trailing" secondItem="Des-Va-PE6" secondAttribute="trailingMargin" id="bkd-Yb-igB"/>
@@ -132,6 +152,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="descriptionLandmark" destination="kAY-m1-Ymo" id="Qzz-6v-Blh"/>
+                                    <outlet property="editButtonLandmark" destination="b2i-TD-SH9" id="VK4-wl-fpV"/>
                                     <outlet property="imageLandmark" destination="t1Q-qI-jCZ" id="th5-jj-dY1"/>
                                     <outlet property="titleLandmark" destination="ncC-L8-flE" id="rcO-Op-vBr"/>
                                     <segue destination="XCc-MN-ZHi" kind="show" identifier="detailLandmark" id="yQv-5H-AxB"/>
@@ -166,38 +187,38 @@
             <objects>
                 <viewController id="Yjh-YA-fJb" customClass="AddLandmarkViewController" customModule="BDMobileProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H67-xu-N60">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8J5-E1-nPD">
-                                <rect key="frame" x="56" y="116" width="279" height="34"/>
+                                <rect key="frame" x="56" y="148" width="279" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Latitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="skl-SX-FG3">
-                                <rect key="frame" x="56" y="491" width="279" height="34"/>
+                                <rect key="frame" x="56" y="523" width="279" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Longitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SBC-K3-XdA">
-                                <rect key="frame" x="56" y="557" width="279" height="34"/>
+                                <rect key="frame" x="56" y="589" width="279" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.artframe" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yeg-7N-cET">
-                                <rect key="frame" x="74" y="211.66666666666663" width="242" height="192.00000000000003"/>
+                                <rect key="frame" x="74" y="243.66666666666663" width="242" height="192.00000000000003"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yeg-7N-cET" secondAttribute="height" multiplier="123:10" constant="-2156.5" id="d9S-2x-7W0"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Titre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WtW-KO-v07">
-                                <rect key="frame" x="56" y="56" width="279" height="34"/>
+                                <rect key="frame" x="56" y="88" width="279" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83q-LL-5nd">
-                                <rect key="frame" x="154" y="623" width="83" height="31"/>
+                                <rect key="frame" x="154" y="655" width="83" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Ajouter"/>
                                 <connections>
@@ -205,7 +226,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA8-BN-1Db">
-                                <rect key="frame" x="145.66666666666666" y="421" width="99" height="38"/>
+                                <rect key="frame" x="145.66666666666666" y="453" width="99" height="38"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Importer">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
@@ -253,6 +274,7 @@
                         <outlet property="latitudeLandmark" destination="skl-SX-FG3" id="41y-vO-OZ7"/>
                         <outlet property="longitudeLandmark" destination="SBC-K3-XdA" id="XbF-iw-8hT"/>
                         <outlet property="titleLandmark" destination="WtW-KO-v07" id="jpM-iU-873"/>
+                        <outlet property="validateButton" destination="83q-LL-5nd" id="fuc-uG-b7B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fxn-CO-PAR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -387,8 +409,9 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="809-mM-pKn" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="vzn-0D-zX1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7v6-bT-3nd">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -401,8 +424,12 @@
             <point key="canvasLocation" x="1813" y="841"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ueh-EL-m0u"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="line.3.horizontal.decrease" catalog="system" width="128" height="73"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

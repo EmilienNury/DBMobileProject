@@ -65,6 +65,12 @@ public class CoreDataManager {
         saveContext()
     }
     
+    public func editCategory(category: Category, newTitle: String) {
+        category.title = newTitle
+        category.modificationDate = Date()
+        saveContext()
+    }
+    
     public func fetchCoordinates(searchQuery: String? = nil) -> [Coordinate] {
         let fetchRequest = Coordinate.fetchRequest()
         
@@ -152,6 +158,15 @@ public class CoreDataManager {
     
     public func deleteLandmark(landmark: Landmark) {
         container.viewContext.delete(landmark)
+        saveContext()
+    }
+    
+    public func editLandmark(landmark: Landmark, newTitle: String, newDesc: String, newImage: Data, newCoordinate: Coordinate) {
+        landmark.title = newTitle
+        landmark.desc = newDesc
+        landmark.image = newImage
+        landmark.coordinate = newCoordinate
+        landmark.modificationDate = Date()
         saveContext()
     }
 }

@@ -65,6 +65,8 @@ class LandmarkViewController: UITableViewController {
         cellLandmark.descriptionLandmark.text = landmark.desc
         cellLandmark.imageLandmark.image = UIImage(data: landmark.image!)
         
+        cellLandmark.editButtonLandmark.tag = indexPath.row;
+        
         return cellLandmark
     }
 
@@ -105,6 +107,17 @@ class LandmarkViewController: UITableViewController {
             
             destination.landmark = landmarks[tableView.indexPath(for: sender as! UITableViewCell)?.row ?? 0]
             destination.title = destination.landmark?.title
+            
+        case "editLandmark":
+            guard let naviguationController = segue.destination as? UINavigationController,
+                  let destination = naviguationController.topViewController as? AddLandmarkViewController else{
+                      return
+                  }
+            destination.delegate = self
+            destination.category = category
+            destination.landmarkToEdit = landmarks[(sender! as AnyObject).tag]
+            destination.title = "Editer un lieu"
+            
             
         default:
             fatalError()

@@ -15,6 +15,9 @@ class AddLandmarkViewController: UIViewController, PHPickerViewControllerDelegat
     @IBOutlet weak var imageLandmark: UIImageView!
     @IBOutlet weak var latitudeLandmark: UITextField!
     @IBOutlet weak var longitudeLandmark: UITextField!
+    @IBOutlet weak var validateButton: UIButton!
+    
+    var landmarkToEdit: Landmark?
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true, completion: nil)
@@ -36,6 +39,15 @@ class AddLandmarkViewController: UIViewController, PHPickerViewControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if landmarkToEdit != nil {
+            titleLandmark.text = landmarkToEdit!.title
+            descLandmark.text = landmarkToEdit!.desc
+            imageLandmark.image = UIImage(data: landmarkToEdit!.image!)
+            latitudeLandmark.text = String(format: "%1f", landmarkToEdit!.coordinate!.latitude)
+            longitudeLandmark.text = String(format: "%1f", landmarkToEdit!.coordinate!.longitude)
+            validateButton.setTitle("Modifier", for: .normal)
+        }
     }
     
     @IBAction func cancelAddLandmark(_ sender: Any) {
@@ -43,8 +55,13 @@ class AddLandmarkViewController: UIViewController, PHPickerViewControllerDelegat
     }
     
     @IBAction func addLandmark(_ sender: Any) {
-        let coordinate = self.dbManagerInstance.createCoordinate(longitude: (longitudeLandmark.text! as NSString).doubleValue, latitude: (latitudeLandmark.text! as NSString).doubleValue)
-        self.dbManagerInstance.createLandmark(title: titleLandmark.text!, desc: descLandmark.text!, image: imageLandmark.image?.pngData(), category: category!, coordinate: coordinate)
+        if landmarkToEdit == nil {
+            let coordinate = self.dbManagerInstance.createCoordinate(longitude: (longitudeLandmark.text! as NSString).doubleValue, latitude: (latitudeLandmark.text! as NSString).doubleValue)
+            self.dbManagerInstance.createLandmark(title: titleLandmark.text!, desc: descLandmark.text!, image: imageLandmark.image?.pngData(), category: category!, coordinate: coordinate)
+        } else {
+            let coordinate = self.dbManagerInstance.createCoordinate(longitude: (longitudeLandmark.text! as NSString).doubleValue, latitude: (latitudeLandmark.text! as NSString).doubleValue)
+            self.dbManagerInstance.editLandmark(landmark: landmarkToEdit!, newTitle: titleLandmark.text!, newDesc: descLandmark.text!, newImage: (imageLandmark.image?.pngData())!, newCoordinate: coordinate)
+        }
         
         delegate?.AddLandmarkViewController(self)
     }
