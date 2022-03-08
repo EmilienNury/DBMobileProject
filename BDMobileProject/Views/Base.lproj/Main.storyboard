@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rss-1c-KUZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DIv-MM-ruZ">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -284,7 +284,7 @@
         <!--Details View Controller-->
         <scene sceneID="Tio-HU-mXb">
             <objects>
-                <viewController id="Kkd-y8-XDz" customClass="DetailsViewController" customModule="BDMobileProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" id="Kkd-y8-XDz" customClass="DetailsViewController" customModule="BDMobileProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bld-Na-gSg">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -367,10 +367,63 @@
             </objects>
             <point key="canvasLocation" x="3636.9230769230767" y="112.32227488151658"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="gUE-2S-8bM">
+            <objects>
+                <tabBarController id="DIv-MM-ruZ" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6mf-tx-9cJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Rss-1c-KUZ" kind="relationship" relationship="viewControllers" id="Tbh-3m-xIa"/>
+                        <segue destination="493-f3-gB1" kind="relationship" relationship="viewControllers" id="KdD-1W-QBV"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T3m-lk-BeK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1251" y="460"/>
+        </scene>
+        <!--Maps-->
+        <scene sceneID="wHY-dH-usy">
+            <objects>
+                <viewController id="493-f3-gB1" customClass="MapsViewController" customModule="BDMobileProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UZp-yc-too">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gRp-9P-ZXh">
+                                <rect key="frame" x="0.0" y="44" width="390" height="717"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="Hvw-uv-dRq"/>
+                                    <constraint firstAttribute="width" id="rRq-1n-fRZ"/>
+                                </constraints>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6N3-1N-ADr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gRp-9P-ZXh" firstAttribute="leading" secondItem="6N3-1N-ADr" secondAttribute="leading" id="EMa-hX-VKf"/>
+                            <constraint firstItem="6N3-1N-ADr" firstAttribute="trailing" secondItem="gRp-9P-ZXh" secondAttribute="trailing" id="P6r-QX-o0H"/>
+                            <constraint firstItem="gRp-9P-ZXh" firstAttribute="top" secondItem="6N3-1N-ADr" secondAttribute="top" id="YkA-vj-etY"/>
+                            <constraint firstItem="6N3-1N-ADr" firstAttribute="bottom" secondItem="gRp-9P-ZXh" secondAttribute="bottom" id="caD-ke-kbJ"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Maps" image="map" catalog="system" id="EDn-9Z-Grs"/>
+                    <connections>
+                        <outlet property="mapView" destination="gRp-9P-ZXh" id="QWK-Pf-I4f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P8K-Tb-hEj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="92" y="840"/>
+        </scene>
+        <!--Home-->
         <scene sceneID="nAh-gr-cQe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rss-1c-KUZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="ose-X5-KcQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="g6J-8N-xtD">
                         <rect key="frame" x="0.0" y="44" width="390" height="96"/>
@@ -428,7 +481,9 @@
         <segue reference="Ueh-EL-m0u"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="house" catalog="system" width="128" height="106"/>
         <image name="line.3.horizontal.decrease" catalog="system" width="128" height="73"/>
+        <image name="map" catalog="system" width="128" height="110"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>
         <systemColor name="labelColor">

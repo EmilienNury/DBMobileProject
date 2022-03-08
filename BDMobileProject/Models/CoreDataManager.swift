@@ -138,6 +138,17 @@ public class CoreDataManager {
         }
     }
     
+    public func fetchAllLandmarks() -> [Landmark] {
+        let fetchRequest = Landmark.fetchRequest()
+        
+        do {
+            let result: [Landmark] = try container.viewContext.fetch(fetchRequest)
+            return result
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
     public func createLandmark(title: String, desc: String?, image: Data?, category: Category, coordinate: Coordinate) {
         let landmark = Landmark(context: container.viewContext)
         landmark.title = title

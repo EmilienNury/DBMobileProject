@@ -21,6 +21,8 @@
 		0844FB7927B40D7A00980EEA /* LandmarkItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FB7827B40D7A00980EEA /* LandmarkItemCell.swift */; };
 		0844FB7B27B4177800980EEA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FB7A27B4177800980EEA /* DetailsViewController.swift */; };
 		0844FB7D27B417CE00980EEA /* AddLandmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844FB7C27B417CE00980EEA /* AddLandmarkViewController.swift */; };
+		08B340C427D75098003B0EAB /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B340C327D75098003B0EAB /* MapsViewController.swift */; };
+		08B340C627D75EA3003B0EAB /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B340C527D75EA3003B0EAB /* MapAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		0844FB7827B40D7A00980EEA /* LandmarkItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkItemCell.swift; sourceTree = "<group>"; };
 		0844FB7A27B4177800980EEA /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		0844FB7C27B417CE00980EEA /* AddLandmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLandmarkViewController.swift; sourceTree = "<group>"; };
+		08B340C327D75098003B0EAB /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
+		08B340C527D75EA3003B0EAB /* MapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,7 @@
 				0844FB6A27B3D22B00980EEA /* LandmarkViewController.swift */,
 				0844FB7A27B4177800980EEA /* DetailsViewController.swift */,
 				0844FB7C27B417CE00980EEA /* AddLandmarkViewController.swift */,
+				08B340C327D75098003B0EAB /* MapsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -79,6 +84,7 @@
 				08431BD727B3F10C006A8AC0 /* CoreDataManager.swift */,
 				0844FB7627B40D7000980EEA /* CategoryItemCell.swift */,
 				0844FB7827B40D7A00980EEA /* LandmarkItemCell.swift */,
+				08B340C527D75EA3003B0EAB /* MapAnnotation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -205,6 +211,8 @@
 				0844FB5427B3CBDC00980EEA /* AppDelegate.swift in Sources */,
 				0844FB6B27B3D22B00980EEA /* LandmarkViewController.swift in Sources */,
 				0844FB5627B3CBDC00980EEA /* SceneDelegate.swift in Sources */,
+				08B340C427D75098003B0EAB /* MapsViewController.swift in Sources */,
+				08B340C627D75EA3003B0EAB /* MapAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
