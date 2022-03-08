@@ -26,4 +26,9 @@ class DetailsViewController: UIViewController{
         modificationDateLandmark.text = "modified: " + DateFormatter.localizedString(from: landmark!.modificationDate!, dateStyle: .short, timeStyle: .short)
         imageLandmark.image = UIImage(data: landmark!.image!)
     }
+    
+    @IBAction func Back(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
 }
